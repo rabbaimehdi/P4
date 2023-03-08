@@ -1,0 +1,53 @@
+    1  cd project/
+    2  ls
+    3  clear
+    4  cd c4-final-project-starter-code/
+    5  ls
+    6  clear
+    7  cd client/
+    8  cd ../backend/
+    9  ls
+   10  grep -r "TODOS"
+   11  grep -r "TODO"
+   12  clear
+   13  npm install -g serverless@3.23.0
+   14  nvm ls
+   15  nvm use v18.14.0 
+   16  npm update --save
+   17  npm install serverless-iam-roles-per-function --save-dev
+   18  npm i serverless-webpack --save-dev
+   19  npm i serverless-plugin-tracing
+   20  serverless
+   21  npm install serverless@3.23.0
+   22  serverless
+   23  npm i
+   24  serverless
+   25  npm install -g serverless
+   26  serverless
+   27  sls config credentials --provider aws --key AKIATEB7IRTA7FM43YGC --secret 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 --profile serverless
+   28  sls config credentials -o --provider aws --key AKIATEB7IRTA7FM43YGC --secret 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 --profile serverless
+   29  serverless
+   30  sls login
+   31  serverless
+   32  nvm install v14
+   33  npm i
+   34  serverless
+   35  npm install -g serverless
+   36  serverless -v
+   37  npm i serverless@3.23.0
+   38  serverless -v
+   39  serverless
+   40  sls deploy
+   41  serverless deploy
+   42  npm i typescript@latest
+   43  serverless deploy
+   44  npm i ts-loader@latest
+   45  serverless deploy
+   46  npm audit fix
+   47  serverless deploy
+   48  npm i webpack@latest
+   49  npm fix audit
+   50  serverless deploy
+   51  history
+   52  history > "ShellCommandsHistory.txt"
+node -v : v14.21.3
