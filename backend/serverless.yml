@@ -72,14 +72,14 @@ functions:
       - http:
           path: /
           method: get
-  # CreateTodo:
-  #   handler: src/lambda/http/createTodo.handler
-  #   events:
-  #     - http:
-  #         path: todos
-  #         method: post
-  #         cors: true
-  #         authorizer: Auth
+  CreateTodo:
+    handler: src/lambda/http/createTodo.handler
+    events:
+      - http:
+          path: todos
+          method: post
+          cors: true
+          authorizer: Auth
           # reqValidatorName: RequestBodyValidator
           # documentation: 
           #   summary: Create new task
