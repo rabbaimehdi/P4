@@ -4,51 +4,60 @@ import { TodoItem } from '../models/TodoItem'
 import { CreateTodoRequest } from '../requests/CreateTodoRequest'
 import { UpdateTodoRequest } from '../requests/UpdateTodoRequest'
 import { createLogger } from '../utils/logger'
+import { TodoUpdate } from '../models/TodoUpdate'
 import * as uuid from 'uuid'
-import * as createError from 'http-errors'
 
-// TODO: Implement businessLogic
+
+
+const logger = createLogger("TodoAccess")
 const attachmentUtils = new AttachmentUtils()
 const todosAccess = new TodosAccess()
 
 
-export const getTodos = async(userId: string): Promise<TodoItem[]> => {
-  try {
+export async function  getTodos (userId: string): Promise<TodoItem[]> {
+    logger.info('Querying User task')
     const userTodos = await todosAccess.getAllTodos(userId)
-    return userTodos;
-  } catch (e) {
-    createError('Error getting user todos ', e)
-    return e
-  }
+    return userTodos; 
 }
 
 
-export const createTodo = async (userId: string, newTodo: CreateTodoRequest): Promise<TodoItem> => {
-  createLogger('creating todo')
+export async function createTodo (newTodo: CreateTodoRequest, userId: string): Promise<TodoItem> {
+  logger.info('CreateTodo fct called')
   const todoId = uuid.v4()
+  const createdAt = new Date().toISOString()
+  const s3Attachment = attachmentUtils.getAttachmentUrl(todoId)
   const todoItem = {
-    createdAt: new Date().toString(),
     userId,
     todoId,
-    attachmentUrl: attachmentUtils.getAttachmentUrl(todoId),
+    createdAt,
+    attachmentUrl: s3Attachment,
     done: false,
     ...newTodo
   }
 
-  return await todosAccess.createTodo(todoItem)
+  return await todosAccess.createTodoItem(todoItem)
 }
 
 
-export const updateTodo = async(todoId: string, userId: string, updateTodoRequest: UpdateTodoRequest): Promise<void> => {
-  return await todosAccess.updateTodoItem(todoId, userId, updateTodoRequest)
+export async function updateTodo(
+  todoId: string, 
+  todoUpdate: UpdateTodoRequest,
+  userId: string ): Promise<TodoUpdate> {
+  return todosAccess.updateTodoItem(todoId, userId, todoUpdate)
 }
+ 
 
-
-export const deleteTodo = async(todoId: string, userId: string): Promise<void> => {
+export async function deleteTodo(
+  todoId: string,
+  userId: string
+  ): Promise<String> {
   return await todosAccess.deleteTodoItem(todoId, userId)
 }
 
 
-export const generatePresignedUrl = async(todoId: string): Promise<String> => {
+export async function createPresignedUrl (
+  todoId: string,
+  userId: string): Promise<string> {
+  logger.info("presigned url created for ", todoId, userId)
   return attachmentUtils.getUploadUrl(todoId)
 }

@@ -1,7 +1,7 @@
 # TODO: Change the name of the org 
 org: mehdirabbai
-app: udacity-todo-project
-service: udacity-todo-project
+app: serverless-todo-app-9
+service: serverless-todo-app-9
 frameworkVersion: '3.23.0'
 
 plugins:
@@ -24,12 +24,12 @@ provider:
   # Use these variables in the functions and resouorces section below. For example, 
   # ${self:provider.environment.ATTACHMENT_S3_BUCKET}
   environment:
-    TODOS_TABLE: Serverless-todos-app-${self:provider.stage}
+    TODOS_TABLE: serverless-todo-app-9-${self:provider.stage}
     TODOS_CREATED_AT_INDEX: CreatedAtIndex
     TODOS_TABLE_INDEX: ${self:provider.environment.TODOS_CREATED_AT_INDEX}
-    ATTACHMENT_S3_BUCKET: felayo-${self:provider.stage}
+    ATTACHMENT_S3_BUCKET: serverless-todo-app-9-${self:provider.stage}
     SIGNED_URL_EXPIRATION: 300
-    PROJECT_NAME: Serverless-todos-app
+    PROJECT_NAME: serverless-todo-app-9
 
   logs:
     # Enable API Gateway logs
