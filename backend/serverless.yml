@@ -67,8 +67,11 @@ functions:
     handler: src/lambda/auth/auth0Authorizer.handler
 
   hello:
-    handler: handler.hello
-
+    handler: src/handler.hello
+    events:
+      - http:
+          path: /
+          method: get
   # CreateTodo:
   #   handler: src/lambda/http/createTodo.handler
   #   events:
