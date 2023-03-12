@@ -56,8 +56,9 @@ export class TodosAccess {
 
   async updateTodoItem(
     todoId: string,
-    todoUpdate: TodoUpdate,
-    userId: string ): Promise<TodoUpdate> {
+    userId: string,
+    todoUpdate: TodoUpdate
+ ): Promise<TodoUpdate> {
     logger.info(`Updating todoid: ${todoId}`)
     const result = await this.dynamoDBClient
       .update({

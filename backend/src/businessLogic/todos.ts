@@ -43,7 +43,7 @@ export async function updateTodo(
   todoId: string, 
   todoUpdate: UpdateTodoRequest,
   userId: string ): Promise<TodoUpdate> {
-  return todosAccess.updateTodoItem(todoId, todoUpdate,userId )
+  return todosAccess.updateTodoItem(todoId,userId, todoUpdate )
 }
  
 
@@ -55,7 +55,7 @@ export async function deleteTodo(
 }
 
 
-export async function createPresignedUrl (
+export async function createAttachmentPresignedUrl (
   todoId: string,
   userId: string): Promise<string> {
   logger.info("presigned url created for ", todoId, userId)
