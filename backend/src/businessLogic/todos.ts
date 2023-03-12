@@ -14,11 +14,11 @@ const attachmentUtils = new AttachmentUtils()
 const todosAccess = new TodosAccess()
 
 
-// export async function  getTodos (userId: string): Promise<TodoItem[]> {
-//     logger.info('Querying User task')
-//     const userTodos = await todosAccess.getAllTodos(userId)
-//     return userTodos; 
-// }
+export async function  getTodos (userId: string): Promise<TodoItem[]> {
+    logger.info('Querying User task')
+    const userTodos = await todosAccess.getAllTodos(userId)
+    return userTodos; 
+}
 
 
 export async function createTodo (newTodo: CreateTodoRequest, userId: string): Promise<TodoItem> {

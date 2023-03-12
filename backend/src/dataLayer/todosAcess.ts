@@ -12,28 +12,28 @@ const logger = createLogger('TodosAccess Class')
 export class TodosAccess {
   constructor(
     private readonly dynamoDBClient: DocumentClient = new XAWS.DynamoDB.DocumentClient(),
-    // private readonly tableIndex = process.env.TODOS_INDEX,
+    private readonly tableIndex = process.env.TODOS_INDEX,
     private readonly tableName = process.env.TODOS_TABLE,
   ) {}
 
 // getAllTodos : Query all todos items
 
-  // async getAllTodos(userId: string): Promise<TodoItem[]> {
-  //   logger.info('Query all todos')
-  //   const res = await this.dynamoDBClient
-  //     .query({
-  //       TableName: this.tableName,
-  //       IndexName: this.tableIndex,
-  //       KeyConditionExpression: 'userId = :userId',
-  //       ExpressionAttributeValues: {
-  //         ':userId': userId
-  //       }
-  //     })
-  //     .promise()
+  async getAllTodos(userId: string): Promise<TodoItem[]> {
+    logger.info('Query all todos')
+    const res = await this.dynamoDBClient
+      .query({
+        TableName: this.tableName,
+        IndexName: this.tableIndex,
+        KeyConditionExpression: 'userId = :userId',
+        ExpressionAttributeValues: {
+          ':userId': userId
+        }
+      })
+      .promise()
 
-  //   const items = res.Items
-  //   return items as TodoItem[]
-  // }
+    const items = res.Items
+    return items as TodoItem[]
+  }
 
 
 // createTodo : Adds item to the table
