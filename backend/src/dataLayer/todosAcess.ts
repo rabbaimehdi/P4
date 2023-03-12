@@ -84,19 +84,19 @@ export class TodosAccess {
 
   // deleteTodoItem : deletes the item using todoID
 
-//   async deleteTodoItem(todoId: string, userId: string): Promise<string> {
-//     logger.info('Delete todo item function is called')
+  async deleteTodoItem(todoId: string, userId: string): Promise<string> {
+    logger.info('Delete todo item function is called')
 
-//     const result = await this.dynamoDBClient
-//       .delete({
-//         TableName: this.tableName,
-//         Key: {
-//           todoId,
-//           userId
-//         }
-//       })
-//       .promise()
-//       logger.info("Todo Item deleted", result)
-//       return todoId as string
-//   }
+    const result = await this.dynamoDBClient
+      .delete({
+        TableName: this.tableName,
+        Key: {
+          todoId,
+          userId
+        }
+      })
+      .promise()
+      logger.info("Todo Item deleted", result)
+      return todoId as string
+  }
  }

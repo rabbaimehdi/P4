@@ -47,12 +47,12 @@ export async function createTodo (newTodo: CreateTodoRequest, userId: string): P
 // }
  
 
-// export async function deleteTodo(
-//   todoId: string,
-//   userId: string
-//   ): Promise<String> {
-//   return await todosAccess.deleteTodoItem(todoId, userId)
-// }
+export async function deleteTodo(
+  todoId: string,
+  userId: string
+  ): Promise<String> {
+  return await todosAccess.deleteTodoItem(todoId, userId)
+}
 
 
 // export async function createAttachmentPresignedUrl (
