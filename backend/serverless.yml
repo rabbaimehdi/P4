@@ -2,7 +2,7 @@
 org: mehdirabbai
 app: serverless-todo-app-9
 service: serverless-todo-app-9
-frameworkVersion: 'npm au'
+frameworkVersion: '3.23.0'
 
 plugins:
   - serverless-webpack
@@ -75,11 +75,11 @@ functions:
           cors: true
           authorizer: Auth
           reqValidatorName: RequestBodyValidator
-          documentation: 
-            summary: Create new task
-            description: Create new task
-            requestModels: 
-              'application/json': CreateTodoRequest
+          # documentation: 
+          #   summary: Create new task
+          #   description: Create new task
+          #   requestModels: 
+          #     'application/json': CreateTodoRequest
     iamRoleStatements:
           - Effect: Allow
             Action:
@@ -125,11 +125,11 @@ functions:
           cors: true
           authorizer: Auth
           reqValidatorName: RequestBodyValidator
-          documentation: 
-            summary: Update task
-            description: Update task
-            requestModels: 
-              'application/json': UpdateTodoRequest
+          # documentation: 
+          #   summary: Update task
+          #   description: Update task
+          #   requestModels: 
+          #     'application/json': UpdateTodoRequest
 
     iamRoleStatementsName: ${self:provider.environment.PROJECT_NAME}-update-todo-${self:provider.stage}
     iamRoleStatements:

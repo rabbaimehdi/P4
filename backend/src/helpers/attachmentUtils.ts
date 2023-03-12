@@ -4,12 +4,12 @@ import * as AWSXRay from 'aws-xray-sdk'
 const XAWS = AWSXRay.captureAWS(AWS)
 
 const s3UrlExpirtaion = process.env.SIGNED_URL_EXPIRATION
-const s3BucketName = process.env.ATTACHMENT_S3_BUCKET
+const BucketName = process.env.ATTACHMENT_S3_BUCKET
 
 export class AttachmentUtils{
     constructor(
         private readonly s3 = new XAWS.S3({signatureVersion: 'v4'}),
-        private readonly s3BucketName = s3BucketName
+        private readonly s3BucketName = BucketName
     ) {}
 
 
