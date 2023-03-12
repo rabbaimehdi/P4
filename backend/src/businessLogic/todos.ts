@@ -43,7 +43,7 @@ export async function updateTodo(
   todoId: string, 
   todoUpdate: UpdateTodoRequest,
   userId: string ): Promise<TodoUpdate> {
-  return todosAccess.updateTodoItem(todoId, userId, todoUpdate)
+  return todosAccess.updateTodoItem(todoId, todoUpdate,userId )
 }
  
 
