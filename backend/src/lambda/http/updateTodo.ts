@@ -18,6 +18,10 @@ export const handler = middy(
     await updateTodo(todo_Id, updated_Todo,user_Id)
     return {
       statusCode: 204,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true
+      },
       body: ''
     }
 })
