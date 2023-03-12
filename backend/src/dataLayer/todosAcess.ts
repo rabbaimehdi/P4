@@ -3,7 +3,7 @@ import * as AWS from 'aws-sdk'
 import { DocumentClient } from 'aws-sdk/clients/dynamodb'
 import { createLogger } from '../utils/logger'
 import { TodoItem } from '../models/TodoItem'
-// import { TodoUpdate } from '../models/TodoUpdate'
+import { TodoUpdate } from '../models/TodoUpdate'
 
 var AWSXRay = require('aws-xray-sdk')
 const XAWS = AWSXRay.captureAWS(AWS)
@@ -54,32 +54,32 @@ export class TodosAccess {
 
 // updateTodoItem : update the item in the url
 
-//   async updateTodoItem(
-//     todoId: string,
-//     userId: string,
-//     todoUpdate: TodoUpdate
-//  ): Promise<TodoUpdate> {
-//     logger.info(`Updating todoid: ${todoId}`)
-//     const result = await this.dynamoDBClient
-//       .update({
-//         TableName: this.tableName,
-//         Key: { userId, todoId },
-//         ConditionExpression: 'attribute_exists(todoId)',
-//         UpdateExpression: 'set #name = :name, dueDate = :dueDate, done = :done',
-//         ExpressionAttributeNames: { '#name': 'name' },
-//         ExpressionAttributeValues: {
-//           ':name': todoUpdate.name,
-//           ':dueDate': todoUpdate.dueDate,
-//           ':done': todoUpdate.done
-//         },
-//         ReturnValues: 'ALL_NEW'
-//       })
-//       .promise()
+  async updateTodoItem(
+    todoId: string,
+    userId: string,
+    todoUpdate: TodoUpdate
+ ): Promise<TodoUpdate> {
+    logger.info(`Updating todoid: ${todoId}`)
+    const result = await this.dynamoDBClient
+      .update({
+        TableName: this.tableName,
+        Key: { userId, todoId },
+        ConditionExpression: 'attribute_exists(todoId)',
+        UpdateExpression: 'set #name = :name, dueDate = :dueDate, done = :done',
+        ExpressionAttributeNames: { '#name': 'name' },
+        ExpressionAttributeValues: {
+          ':name': todoUpdate.name,
+          ':dueDate': todoUpdate.dueDate,
+          ':done': todoUpdate.done
+        },
+        ReturnValues: 'ALL_NEW'
+      })
+      .promise()
 
-//       const todoItemUpdate = result.Attributes
-//       logger.info("Item updated", todoItemUpdate)
-//       return todoItemUpdate as TodoUpdate
-//   }
+      const todoItemUpdate = result.Attributes
+      logger.info("Item updated", todoItemUpdate)
+      return todoItemUpdate as TodoUpdate
+  }
 
 
   // deleteTodoItem : deletes the item using todoID

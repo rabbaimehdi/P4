@@ -122,14 +122,14 @@ functions:
           - '*'
 
 
-  # UpdateTodo:
-  #   handler: src/lambda/http/updateTodo.handler
-  #   events:
-  #     - http:
-  #         method: patch
-  #         path: todos/{todoId}
-  #         cors: true
-  #         authorizer: Auth
+  UpdateTodo:
+    handler: src/lambda/http/updateTodo.handler
+    events:
+      - http:
+          method: patch
+          path: todos/{todoId}
+          cors: true
+          authorizer: Auth
   #         # reqValidatorName: RequestBodyValidator
   #         # documentation: 
   #         #   summary: Update task
@@ -137,17 +137,17 @@ functions:
   #         #   requestModels: 
   #         #     'application/json': UpdateTodoRequest
 
-  #   iamRoleStatementsName: ${self:provider.environment.PROJECT_NAME}-update-todo-${self:provider.stage}
-  #   iamRoleStatements:
-  #     - Effect: Allow
-  #       Action:
-  #         - dynamodb:UpdateItem
-  #       Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
-  #     - Effect: 'Allow'
-  #       Action:
-  #         - 'xray:PutTraceSegments'
-  #       Resource:
-  #         - '*'
+    iamRoleStatementsName: ${self:provider.environment.PROJECT_NAME}-update-todo-${self:provider.stage}
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:UpdateItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
+      - Effect: 'Allow'
+        Action:
+          - 'xray:PutTraceSegments'
+        Resource:
+          - '*'
   
   DeleteTodo:
     handler: src/lambda/http/deleteTodo.handler
