@@ -170,26 +170,26 @@ functions:
         Resource:
           - '*'
  
-  # GenerateUploadUrl:
-  #   handler: src/lambda/http/generateUploadUrl.handler
-  #   events:
-  #     - http:
-  #         method: post
-  #         path: todos/{todoId}/attachment
-  #         cors: true
-  #         authorizer: Auth
-  #   iamRoleStatementsName: ${self:provider.environment.PROJECT_NAME}-generate-s3-upload-url-${self:provider.stage}
-  #   iamRoleStatements:
-  #     - Effect: Allow
-  #       Action:
-  #         - dynamodb:Query
-  #         - dynamodb:UpdateItem
-  #       Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
-  #     - Effect: Allow
-  #       Action:
-  #         - xray:PutTraceSegments             
-  #       Resource: 
-  #         - '*'
+  GenerateUploadUrl:
+    handler: src/lambda/http/generateUploadUrl.handler
+    events:
+      - http:
+          method: post
+          path: todos/{todoId}/attachment
+          cors: true
+          authorizer: Auth
+    iamRoleStatementsName: ${self:provider.environment.PROJECT_NAME}-generate-s3-upload-url-${self:provider.stage}
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:Query
+          - dynamodb:UpdateItem
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
+      - Effect: Allow
+        Action:
+          - xray:PutTraceSegments             
+        Resource: 
+          - '*'
 
 resources:
   Resources:

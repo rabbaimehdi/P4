@@ -55,9 +55,9 @@ export async function deleteTodo(
 }
 
 
-// export async function createAttachmentPresignedUrl (
-//   todoId: string,
-//   userId: string): Promise<string> {
-//   logger.info("presigned url created for ", todoId, userId)
-//   return attachmentUtils.getUploadUrl(todoId)
-// }
+export async function createAttachmentPresignedUrl (
+  todoId: string,
+  userId: string): Promise<string> {
+  logger.info("presigned url created for ", todoId, userId)
+  return attachmentUtils.getUploadUrl(todoId)
+}
