@@ -9,18 +9,18 @@ import { createTodo } from '../../businessLogic/todos'
 
 export const handler = middy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-    const new_Todo: CreateTodoRequest = JSON.parse(event.body)
+    const newTodo: CreateTodoRequest = JSON.parse(event.body)
 
-    const user_Id = getUserId(event)
-    const new_Item = await createTodo(new_Todo, user_Id)
+    const userId = getUserId(event)
+    const newItem = await createTodo(newTodo, userId)
     return {
       statusCode: 201,
-      headers: {
-        "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': '*'
-      },
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   'Access-Control-Allow-Origin': '*'
+      // },
       body: JSON.stringify({
-        item: new_Item
+        item: newItem
       })
     }
   })

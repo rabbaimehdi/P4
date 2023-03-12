@@ -8,8 +8,8 @@ plugins:
   - serverless-webpack
   - serverless-iam-roles-per-function
   - serverless-plugin-tracing
-  - serverless-aws-documentation
-  - serverless-reqvalidator-plugin
+  # - serverless-aws-documentation
+  # - serverless-reqvalidator-plugin
 
 provider:
   name: aws
@@ -44,20 +44,20 @@ provider:
             - xray:PutTelemetryRecords
           Resource: "*"
 
-custom: 
-  documentation:
-    api:
-      info:
-        version: v1.0.0
-        title: Mehdi's Todo APP
-        description: Serverless application for managing todo tasks
-    models:
-      - name: CreateTodoRequest
-        contentType: application/json
-        schema:  ${file(models/create-todo-model.json)}
-      - name: UpdateTodoRequest
-        contentType: application/json
-        schema:  ${file(models/update-todo-model.json)}
+# custom: 
+#   documentation:
+#     api:
+#       info:
+#         version: v1.0.0
+#         title: Mehdi's Todo APP
+#         description: Serverless application for managing todo tasks
+#     models:
+#       - name: CreateTodoRequest
+#         contentType: application/json
+#         schema:  ${file(models/create-todo-model.json)}
+#       - name: UpdateTodoRequest
+#         contentType: application/json
+#         schema:  ${file(models/update-todo-model.json)}
 
 
 
