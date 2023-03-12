@@ -74,7 +74,7 @@ functions:
           method: post
           cors: true
           authorizer: Auth
-          reqValidatorName: RequestBodyValidator
+          # reqValidatorName: RequestBodyValidator
           # documentation: 
           #   summary: Create new task
           #   description: Create new task
@@ -124,7 +124,7 @@ functions:
           path: todos/{todoId}
           cors: true
           authorizer: Auth
-          reqValidatorName: RequestBodyValidator
+          # reqValidatorName: RequestBodyValidator
           # documentation: 
           #   summary: Update task
           #   description: Update task
