@@ -8,8 +8,8 @@ plugins:
   - serverless-webpack
   - serverless-iam-roles-per-function
   - serverless-plugin-tracing
-  - serverless-reqvalidator-plugin
-  - serverless-aws-documentation
+  # - serverless-reqvalidator-plugin
+  # - serverless-aws-documentation
 
 
 provider:
@@ -45,20 +45,20 @@ provider:
             - xray:PutTelemetryRecords
           Resource: "*"
 
-custom: 
-  documentation:
-    api:
-      info:
-        version: v1.0.0
-        title: Mehdi's Todo APP
-        description: Serverless application for managing todo tasks
-    models:
-      - name: CreateTodoRequest
-        contentType: application/json
-        schema:  ${file(models/create-todo-model.json)}
-      - name: UpdateTodoRequest
-        contentType: application/json
-        schema:  ${file(models/update-todo-model.json)}
+# custom: 
+#   documentation:
+#     api:
+#       info:
+#         version: v1.0.0
+#         title: Mehdi's Todo APP
+#         description: Serverless application for managing todo tasks
+#     models:
+#       - name: CreateTodoRequest
+#         contentType: application/json
+#         schema:  ${file(models/create-todo-model.json)}
+#       - name: UpdateTodoRequest
+#         contentType: application/json
+#         schema:  ${file(models/update-todo-model.json)}
 
 
 
@@ -84,7 +84,7 @@ functions:
          # reqValidatorName: RequestBodyValidator
           request:
             schemas:
-              'application/json': CreateTodoRequest
+              'application/json': ${file(models/create-todo-model.json)}
           # documentation: 
           #   summary: Create new task
           #   description: Create new task
@@ -136,7 +136,7 @@ functions:
           authorizer: Auth
           request:
             schemas:
-              'application/json': UpdateTodoRequest
+              'application/json': ${file(models/update-todo-model.json)}
          # reqValidatorName: RequestBodyValidator
           # documentation: 
           #   summary: Update task
