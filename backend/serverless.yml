@@ -74,12 +74,12 @@ functions:
           method: post
           cors: true
           authorizer: Auth
-          # reqValidatorName: RequestBodyValidator
-          # documentation: 
-          #   summary: Create new task
-          #   description: Create new task
-          #   requestModels: 
-          #     'application/json': CreateTodoRequest
+          reqValidatorName: RequestBodyValidator
+          documentation: 
+            summary: Create new task
+            description: Create new task
+            requestModels: 
+              'application/json': CreateTodoRequest
     iamRoleStatements:
           - Effect: Allow
             Action:
@@ -124,12 +124,12 @@ functions:
           path: todos/{todoId}
           cors: true
           authorizer: Auth
-          # reqValidatorName: RequestBodyValidator
-          # documentation: 
-          #   summary: Update task
-          #   description: Update task
-          #   requestModels: 
-          #     'application/json': UpdateTodoRequest
+          reqValidatorName: RequestBodyValidator
+          documentation: 
+            summary: Update task
+            description: Update task
+            requestModels: 
+              'application/json': UpdateTodoRequest
 
     iamRoleStatementsName: ${self:provider.environment.PROJECT_NAME}-update-todo-${self:provider.stage}
     iamRoleStatements:
